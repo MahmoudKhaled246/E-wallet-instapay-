@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 export default function BalancePage() {
   const [balance, setBalance] = useState(2000);
@@ -41,6 +42,9 @@ export default function BalancePage() {
           <img src={logo} alt="" />
           <h1 className="text-[25px]">مرحباً : Mahmoud Khaled ❤️</h1>
           <p className="text-[49px]">الرصيد : {balance} ج.م</p>
+          <Link to={"/"} className="btn btn-error text-white">
+            تسجل خروج
+          </Link>
         </div>
         <div className="action col-span-2 flex flex-col gap-20  bg-white/40 backdrop-blur-md rounded-2xl justify-center items-center py-20">
           <input
