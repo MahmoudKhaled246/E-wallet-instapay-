@@ -60,8 +60,7 @@ export default function BalancePage() {
           />
           {isUnderZero && (
             <p className="text-red-600 text-2xl mt-[-30px]">
-              القيمة التي ادخلتها اكبر من مجموع رصيدك الرجاء التأكد من الرصيد
-              المتبقي
+              رصيدك الحالي لا يكفي
             </p>
           )}
 
