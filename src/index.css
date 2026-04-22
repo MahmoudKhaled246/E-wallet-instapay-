@@ -1,0 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&display=swap");
+@import "tailwindcss";
+@plugin "daisyui/index.js";
+* {
+  font-family: "Alexandria", sans-serif;
+}
