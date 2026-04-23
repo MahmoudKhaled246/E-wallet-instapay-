@@ -59,7 +59,7 @@ export default function BalancePage() {
             }
           />
           {isUnderZero && (
-            <p className="text-red-600 text-2xl mt-[-30px]">
+            <p className="text-red-600 text-2xl -mt-7.5">
               رصيدك الحالي لا يكفي
             </p>
           )}
