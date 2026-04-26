@@ -13,7 +13,7 @@ export default function BalancePage() {
   const [transactions, setTransactions] = useState(originalTransactions || []);
 
   const [balance, setBalance] = useState(
-    originalTransactions
+    originalTransactions.length
       ? originalTransactions[originalTransactions.length - 1].after
       : 0,
   );
@@ -82,7 +82,7 @@ export default function BalancePage() {
     <main className="h-dvh w-full bg-linear-to-br from-[#7300DC] to-[#FF5B2B] flex justify-center items-center">
       <Toaster position="top-center" reverseOrder={true} />
       <div
-        className="contianer grid grid-rows-2  grid-cols-3 gap-4  h-[90%] w-[90%] rounded-2xl"
+        className="contianer grid grid-rows-2  grid-cols-3 gap-4  h-[90%] w-[90%] rounded-2xl "
         dir="rtl"
       >
         {/* Top left div */}
