@@ -1,28 +1,41 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  const [error, setError] = useState(false);
 
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  // const [userName, setUserName] = useState("");
+  // const [password, setPassword] = useState("");
+
+  let userNameInput = useRef();
+  let passwordInput = useRef();
 
   const dataUserName = "Mahmoud_Khaled";
   const dataPwd = "Admin@123";
 
   const handleLogin = () => {
-    if (userName === dataUserName && password === dataPwd) {
-      setError(false);
-      navigate("/balance");
+    let userName = userNameInput.current.value;
+    let password = passwordInput.current.value;
+
+    if (userName == "" || password == "") {
+      toast.error(`يرجى ملء الخانات`);
     } else {
-      setError(true);
+      if (userName === dataUserName && password === dataPwd) {
+        navigate("/balance");
+      } else {
+        toast.error(` اسم المستخدم او كلمة السر الذي ادخلتها غير صحيحة يرجى اعادة
+              المحاولة`);
+      }
     }
   };
 
   return (
     <main className="h-dvh w-full bg-linear-to-br from-[#7300DC] to-[#FF5B2B] flex justify-center items-center ">
+      <Toaster position="top-center" reverseOrder={true} />
+
       <div className="login-card lg:w-120 md:w-120 w-90 rounded-xl bg-white/40 backdrop-blur-md flex flex-col items-center gap-20 py-10">
         <div className="logo">
           <img src={logo} width={150} alt="logo" />
@@ -31,8 +44,7 @@ export default function LoginPage() {
           <label htmlFor="userName">: اسم المستخدم</label>
           <input
             type="text"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            ref={userNameInput}
             placeholder="... ادخل اسم المستخدم"
             className="input input-primary bg-white/20 placeholder:text-right placeholder:text-white/80"
           />
@@ -40,17 +52,10 @@ export default function LoginPage() {
           <label htmlFor="pwd">: كلمة المرور </label>
           <input
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            ref={passwordInput}
             placeholder="... ادخل كلمة المرور"
             className="input input-primary bg-white/20 placeholder:text-right placeholder:text-white/80"
           />
-          {error && (
-            <p className="text-red-500 text-end text-[13px] ">
-              اسم المستخدم او كلمة السر الذي ادخلتها غير صحيحة يرجى اعادة
-              المحاولة
-            </p>
-          )}
 
           <button
             onClick={handleLogin}
