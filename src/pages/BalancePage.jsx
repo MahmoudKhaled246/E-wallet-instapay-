@@ -9,7 +9,8 @@ export default function BalancePage() {
   const amountInput = useRef();
 
   let originalTransactionsJson = localStorage.getItem("Transactions");
-  let originalTransactions = JSON.parse(originalTransactionsJson);
+
+  let originalTransactions = JSON.parse(originalTransactionsJson) || [];
   const [transactions, setTransactions] = useState(originalTransactions || []);
 
   const [balance, setBalance] = useState(
